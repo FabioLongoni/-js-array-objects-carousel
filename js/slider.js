@@ -34,17 +34,23 @@ const slides = [
 	},
 ]
 
-console.log(slides);
 
 //recupero contenitore immagini dal dom
 const cardImageEl = document.querySelector('.slides-wrapper');
 
-slides.forEach(() => {
+// slides.forEach((slideEl) => {
+// 	const slideElement = document.createElement('li');
+// 	slideElement.classList.add('slide');
+// 	console.log(slideElement);
+// 	slideElement.append(slideEl.url, slideEl.title, slideEl.description);
+// 	cardImageEl.append(slideElement);
+// })
+
+for (key in slides) {
 	const slideElement = document.createElement('li');
 	slideElement.classList.add('slide');
 	console.log(slideElement);
-	slideElement.append(slides.url, slides.title, slides.description);
+	slideElement.innerHTML += slides[key].url + ' ' + slides[key].title + ' ' + slides[key].description;
 	cardImageEl.append(slideElement);
-})
-
+}
 
