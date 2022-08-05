@@ -36,6 +36,7 @@ const slides = [
 
 
 const cardImageEl = document.querySelector('.slides-wrapper');
+const sliderElement = document.querySelector('.slider');
 
 // slides.forEach((slideEl) => {
 // 	const slideElement = document.createElement('li');
@@ -51,25 +52,31 @@ for (key in slides) {
 	
 
 	let slideElementImage = document.createElement('img');
-	slideElementImage.src = 'img/' + slides[key].url;
+	slideElementImage.src = slides[key].url;
 	slideElement.append(slideElementImage);
 
+
 	let slideElementTitle = document.createElement('h3');
-	slideElementTitle.classList.add('slide_title');
-	slideElementTitle = slides[key].title;
-	slideElement.append(slideElementTitle);
+	slideElementTitle.classList.add('slide__title');
+	slideElementTitle.innerHTML = slides[key].title;
 	
 
 	let slideElementDescription = document.createElement('p');
-	slideElementDescription.classList.add('slide_description');
-	slideElementDescription = slides[key].description;
-	slideElement.append(slideElementDescription);
+	slideElementDescription.classList.add('slide__description');
+	slideElementDescription.innerHTML = slides[key].description;
+	
+	let slideContent = document.createElement('div');
+	slideContent.classList.add('slide__content');
+	slideContent.append(slideElementTitle, slideElementDescription);
+
+	slideElement.append(slideContent);
 
 	console.log(slideElement);
 	
-
 	cardImageEl.append(slideElement);
 	
 	
 }
+
+sliderElement.append(cardImageEl);
 
