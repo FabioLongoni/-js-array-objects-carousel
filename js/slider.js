@@ -34,6 +34,7 @@ const slides = [
 	},
 ]
 
+
 console.log(slides);
 
 const slidesElement = [];
@@ -78,10 +79,12 @@ for (key in slides) {
 
 	cardImageEl.append(slideElement);
 	slidesElement.push(slideElement);
+	
 }
 
 console.log(cardImageEl);
 
+slidesElement[0].classList.add('active')
 const arrowNext = document.querySelector('.arrow-next');
 const arrowPrev = document.querySelector('.arrow-prev');
 
