@@ -34,9 +34,14 @@ const slides = [
 	},
 ]
 
+console.log(slides);
+
+const slidesElement = [];
+let currentIndex = 0;
 
 const cardImageEl = document.querySelector('.slides-wrapper');
-const sliderElement = document.querySelector('.slider');
+// const sliderElement = document.querySelector('.slider');
+
 
 // slides.forEach((slideEl) => {
 // 	const slideElement = document.createElement('li');
@@ -48,7 +53,7 @@ const sliderElement = document.querySelector('.slider');
 
 for (key in slides) {
 	const slideElement = document.createElement('li');
-	slideElement.classList.add('slide');
+	slideElement.className ='slide';
 	
 
 	let slideElementImage = document.createElement('img');
@@ -71,12 +76,39 @@ for (key in slides) {
 
 	slideElement.append(slideContent);
 
-	console.log(slideElement);
-	
 	cardImageEl.append(slideElement);
-	
-	
+	slidesElement.push(slideElement);
 }
 
-sliderElement.append(cardImageEl);
+console.log(cardImageEl);
+
+const arrowNext = document.querySelector('.arrow-next');
+const arrowPrev = document.querySelector('.arrow-prev');
+
+arrowPrev.addEventListener('click', function () {
+	const slideActive = slidesElement[currentIndex];
+	slideActive.classList.remove('active');
+
+	currentIndex -- 
+	if (currentIndex < 0) {
+		currentIndex = slides.length - 1;
+	}
+
+	const slidePrev = slidesElement[currentIndex];
+	slidePrev.classList.add('active');
+})
+
+arrowNext.addEventListener('click', function () {
+	const slideActive = slidesElement[currentIndex];
+	slideActive.classList.remove('active');
+
+	currentIndex ++ 
+	if (currentIndex > slides.length - 1) {
+		currentIndex = 0;
+	}
+
+	const slideNext = slidesElement[currentIndex];
+	slideNext.classList.add('active');
+})
+
 

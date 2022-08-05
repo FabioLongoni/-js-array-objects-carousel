@@ -20,7 +20,7 @@ ul {
 }
 
 .slide {
-	/* display: none; */
+	display: none;
 	position: relative;
 }
 
